@@ -22,21 +22,28 @@ export class Modal extends React.Component {
         	<div className="modal-dialog" role="document">
           	<div className="modal-content">
             	<div className="modal-header">
-              	<button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h3>  {album.title}
+              	<button type="button" className="close" data-dismiss="modal" aria-label="Close">
+									<span className="close-button" aria-hidden="true">&times;</span>
+									</button>
+									</h3>
             	</div>
 	            	<div className="modal-body">
-	            		<h3>  {album.title}</h3>
-									<h4> Tracks </h4>
+								<div className="container-2">
+								<div className='audioTrack-box box'>
+									<img className="audio-album-cover" src={`app/public/img/${album.cover}`}/>
+									<ReactAudioPlayer src={`app/public/tracks/${album.audio}`}/>
+								</div>
+									<div className="info-box box">
+									<h4 className="trackList-h4"> Tracks </h4>
 	              	{album.trackList.map((track, i) =>
 										<ul key={i} className="trackList">
 										<li key={i} className="tracks">{track}</li>
 										</ul>
 									)}
-									<div className='audioTrack'>
-							 			<img src={`app/public/img/${album.cover}`}/>
-										<ReactAudioPlayer src={`app/public/tracks/${album.audio}`}/>
 									</div>
   							</div>
+							</div>
             <div className="modal-footer">
             <a href={`app/public/tracks/${album.audio}`} download={album.audio}>Download</a>
             </div>

@@ -35,14 +35,16 @@ export class Home extends React.Component {
 	render(){
 		return(
 		  <div className ="home_albumCovers">
-		  <h2> Dose of HipHop </h2>
+			<h2 className="header"> Dose of HipHop </h2>
 				<Modal/>
+			<div className="container">
 			 {albumData.albums.map((album, i) => (
-			 	<div key={i} onClick={this.handleClick.bind(this, i)}>
-           	 	  <img src={`app/public/img/${album.cover}`} data-toggle="modal" data-target="#myModal"/>
+			 	<div className="box" key={i} onClick={this.handleClick.bind(this, i)}>
+           	 	  <img className="box-image"src={`app/public/img/${album.cover}`} data-toggle="modal" data-target="#myModal"/>
 
         		</div>
       		))}
+			</div>
 		  </div>
 		)
 	}
