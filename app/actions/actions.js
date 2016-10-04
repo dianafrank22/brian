@@ -1,17 +1,8 @@
 import albumData from "../../secret/albumData"
 export const GET_ALBUM_INFO = "GET_ALBUM_INFO"
 export const UPDATE_ALBUM_INFO = "UPDATE_ALBUM_INFO"
-// display albums
-// get all albums
-// display albums
+export const CREATE_SONG_ARRAY = "CREATE_SONG_ARRAY"
 
-// get tracks
-// get audio file
-// update download
-// update play
-// update tracks
-// update header
-// update iamge
 
 
 export function getAlbumInfo(index){
@@ -39,6 +30,16 @@ export function updateAlbumInfo(info){
 	}
 }
 
+export function createSongArray(data){
+	var song = []
+	var info = {"url": 'app/public/tracks/'+data.audio, "cover": 'app/public/img/'+data.cover, "artist": {"song": data.title}}
+	song.push(info)
+	return{
+		type: CREATE_SONG_ARRAY,
+		songs: song
+	}
+}
+
 
 
 // export function storeApiArray(apis){
@@ -47,4 +48,3 @@ export function updateAlbumInfo(info){
 // 		serviceAPIs: apis
 // 	}
 // }
-

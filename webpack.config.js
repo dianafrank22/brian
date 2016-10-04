@@ -1,4 +1,3 @@
-require('dotenv').config();
 var path  = require('path')
 
 module.exports = {
@@ -24,7 +23,7 @@ module.exports = {
     },
     {
       test: /\.html$/,
-      loader: "file?name=[name].[ext]", 
+      loader: "file?name=[name].[ext]",
     },
      {
       test: /\.(png|jpg)$/,

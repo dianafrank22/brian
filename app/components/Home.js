@@ -1,7 +1,8 @@
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
-import {getAlbumInfo, updateAlbumInfo} from '../actions/actions.js'
+import {getAlbumInfo, updateAlbumInfo, createSongArray} from '../actions/actions.js'
 import albumData from '../../secret/albumData'
+import Modal from './Modal'
 
 export class Home extends React.Component {
 	constructor(props){
@@ -16,6 +17,7 @@ export class Home extends React.Component {
 		console.log(index)
 		dispatch(getAlbumInfo(index)).then((data) =>{
 			dispatch(updateAlbumInfo(data))
+			dispatch(createSongArray(data))
 		}, (err) => {
 			console.log(err)
 		})
@@ -29,14 +31,16 @@ export class Home extends React.Component {
 	}
 
 
+
 	render(){
 		return(
 		  <div className ="home_albumCovers">
 		  <h2> Dose of HipHop </h2>
+				<Modal/>
 			 {albumData.albums.map((album, i) => (
 			 	<div key={i} onClick={this.handleClick.bind(this, i)}>
-           	 	  <img src={`app/public/img/${album.cover}`}/>
-		
+           	 	  <img src={`app/public/img/${album.cover}`} data-toggle="modal" data-target="#myModal"/>
+
         		</div>
       		))}
 		  </div>
